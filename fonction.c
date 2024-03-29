@@ -4,13 +4,9 @@
 
 int insert_value_colonne(COLUMN *col, int value_insert){
     while(col->taille_Logique>=col->taille_Physique){
-        col->taille_Physique=col->taille_Physique+1;
-        printf("Taille physique = %d\n",col->taille_Physique);
-        col->tab = realloc(col->tab, col->taille_Physique);
+        col->tab = realloc(col->tab, ++col->taille_Physique*sizeof(int));
     }
     col->tab[col->taille_Logique++]=value_insert;
-    printf("Taille logique = %d         ",col->taille_Logique);
-    printf("col = %d\n",col->tab[col->taille_Logique-1]);
 }
 
 COLUMN *create_column(char *title){
