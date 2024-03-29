@@ -4,11 +4,11 @@
 
 
 COLUMN *create_column(char *title){
-    int *tab[256];
+    int *tab = NULL;
     COLUMN * column = (COLUMN*)malloc(sizeof (COLUMN));
     column->titre=title;
-    column->tab = *tab;
+    column->tab = tab;
     column->taille_Logique=0;
-    column->taille_Physique=256;
+    column->taille_Physique=0;
     return column;
 }
