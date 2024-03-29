@@ -8,6 +8,6 @@ int main() {
     for(int i; i<2048;i++){
         insert_value_colonne(colonne, i);
     }
-    printf("")
+    printf("finish")
     return 0;
 }
