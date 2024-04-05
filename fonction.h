@@ -10,6 +10,6 @@ typedef struct {
 #ifndef PROJET_FONCTION_H
 #define PROJET_FONCTION_H
 
-COLUMN *create_column(char*title);
-
+int insert_value_colonne(COLUMN *col, int value_insert);
+COLUMN *create_column(char *title);
 #endif //PROJET_FONCTION_H

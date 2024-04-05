@@ -3,9 +3,11 @@
 #include <stdlib.h>
 
 int main() {
-    char titre[50] = "test";
-    COLUMN *colonne = create_column(titre);
-    printf("%s",colonne->titre);
-
+    COLUMN *colonne = create_column("test");
+    printf("%s\n",colonne->titre);
+    for(int i; i<2048;i++){
+        insert_value_colonne(colonne, i);
+    }
+    printf("finish\n");
     return 0;
 }
