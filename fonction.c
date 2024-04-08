@@ -3,7 +3,6 @@
 #include <stdlib.h>
 
 int insert_value_colonne(COLUMN *col, int value_insert){
-    printf("test");
     while(col->taille_Logique>=col->taille_Physique){
         col->tab = realloc(col->tab, ++col->taille_Physique*sizeof(int));
     }
@@ -27,6 +26,7 @@ void delete_column(COLUMN *col) {
     free(col);
 }
 void print_col(COLUMN* col){
+    printf("%d",col->taille_Logique);
     for(int i =0; i<col->taille_Logique; i++){
         printf("[%d] %d\n",i,col->tab[i]);
     }
@@ -94,11 +94,11 @@ void remplissage_CDataframe(CDataframe* Dataframe){
     }
 }
 void remplissage_Dur_CDataframe(CDataframe* Dataframe){
+    int taillePhys = Dataframe->tab[0].taille_Physique;
     for(int i = 0;i<Dataframe->taille_Physique;i++){
         Dataframe->tab[i].titre = "title";
-        for(int j = 0;j<Dataframe->tab[i].taille_Physique;j++){
+        for(int j = 0;j<taillePhys;j++){
             insert_value_colonne(&Dataframe->tab[i],0);
-            printf("test22");
         }
     }
 }
@@ -137,12 +137,12 @@ void afficher_nombre_colonne_CDataframe(CDataframe* Dataframe){
 void ajout_ligne_CDataFrame(CDataframe* CDataFrame) {
     //vérification taille physique max Colonne
     int taille_phys_max = CDataFrame->tab[0].taille_Physique;
-    for (int i = 1; i < CDataFrame->taille_Physique; i++) {
+    for (int i = 1; i < CDataFrame->taille_Logique; i++) {
         if (CDataFrame->tab[i].taille_Physique >
             taille_phys_max) { taille_phys_max = CDataFrame->tab[i].taille_Physique; }
     }
     //ajout ligne
-    for (int i = 0; i < CDataFrame->taille_Physique; i++) {
+    for (int i = 0; i < CDataFrame->taille_Logique; i++) {
         CDataFrame->tab[i].taille_Physique = taille_phys_max + 1;
         CDataFrame->tab[i].tab= realloc(CDataFrame->tab[i].tab, CDataFrame->tab[i].taille_Physique*sizeof(int));
     }
