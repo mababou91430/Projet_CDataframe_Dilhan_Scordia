@@ -4,10 +4,9 @@
 
 int main() {
     COLUMN *colonne = create_column("test");
-    printf("%s\n",colonne->titre);
-    for(int i; i<2048;i++){
+    for(int i=0; i<5;i++){
         insert_value_colonne(colonne, i);
     }
-    printf("finish\n");
+    print_col(colonne);
     return 0;
 }

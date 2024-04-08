@@ -20,3 +20,8 @@ COLUMN *create_column(char *title){
     column->taille_Physique=0;
     return column;
 }
+void print_col(COLUMN* col){
+    for(int i =0; i<col->taille_Logique; i++){
+        printf("[%d] %d\n",i,col->tab[i]);
+    }
+}
