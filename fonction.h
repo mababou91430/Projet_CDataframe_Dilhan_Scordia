@@ -26,4 +26,5 @@ int valeur_egale_x(COLUMN* col,int x);
 void delete_column(COLUMN *col);
 CDataframe* creation_CDataframe();
 void remplissage_CDataframe(CDataframe*);
+void remplissage_Dur_CDataframe(CDataframe*);
 #endif //PROJET_FONCTION_H
