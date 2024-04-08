@@ -26,7 +26,6 @@ void delete_column(COLUMN *col) {
     free(col);
 }
 void print_col(COLUMN* col){
-    printf("%d",col->taille_Logique);
     for(int i =0; i<col->taille_Logique; i++){
         printf("[%d] %d\n",i,col->tab[i]);
     }
@@ -98,7 +97,9 @@ void remplissage_Dur_CDataframe(CDataframe* Dataframe){
     for(int i = 0;i<Dataframe->taille_Physique;i++){
         Dataframe->tab[i].titre = "title";
         for(int j = 0;j<taillePhys;j++){
-            insert_value_colonne(&Dataframe->tab[i],0);
+            if(Dataframe->tab[i].tab[j] != 0) {
+                insert_value_colonne(&Dataframe->tab[i], 0);
+            }
         }
     }
 }
