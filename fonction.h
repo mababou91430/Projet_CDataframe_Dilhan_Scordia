@@ -27,4 +27,6 @@ void delete_column(COLUMN *col);
 CDataframe* creation_CDataframe();
 void remplissage_CDataframe(CDataframe*);
 void remplissage_Dur_CDataframe(CDataframe*);
+void afficher_All_CDataframe(CDataframe*);
+void afficher_Ligne_Limite_CDataframe(CDataframe*,int x);
 #endif //PROJET_FONCTION_H

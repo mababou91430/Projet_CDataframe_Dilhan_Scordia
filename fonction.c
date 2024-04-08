@@ -93,12 +93,29 @@ void remplissage_CDataframe(CDataframe* Dataframe){
     }
 }
 void remplissage_Dur_CDataframe(CDataframe* Dataframe){
-    char title[50];
-    int valeur;
     for(int i = 0;i<Dataframe->taille_Logique;i++){
         Dataframe->tab[i].titre = "title";
         for(int j = 0;j<Dataframe->tab[i].taille_Physique;j++){
             insert_value_colonne(&Dataframe->tab[i],0);
         }
+    }
+}
+void afficher_All_CDataframe(CDataframe* Dataframe){
+    for(int i = 0; i<Dataframe->taille_Logique;i++){
+        printf("%s\n",Dataframe->tab[i].titre);
+        print_col(&Dataframe->tab[i]);
+    }
+}
+void afficher_Ligne_Limite_CDataframe(CDataframe* Dataframe,int x){
+    if (x<Dataframe->tab[0].taille_Logique){
+        for(int i = 0;i<Dataframe->taille_Logique;i++) {
+            printf("%s\n", Dataframe->tab[i].titre);
+            for (int j = 0; j <x;j++){
+                printf("%d",Dataframe->tab[i].tab[j]);
+            }
+        }
+    }
+    else{
+        printf("Limite trop grande");
     }
 }
