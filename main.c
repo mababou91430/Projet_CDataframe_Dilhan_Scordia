@@ -8,7 +8,10 @@ int main() {
         ajout_ligne_CDataFrame(Dataframe);
     }
     remplissage_Dur_CDataframe(Dataframe);
-    afficher_Ligne_Limite_CDataframe(Dataframe,3);
-
+    afficher_All_CDataframe(Dataframe);
+    ajout_ligne_CDataFrame(Dataframe);
+    remplissage_Dur_CDataframe(Dataframe);
+    afficher_All_CDataframe(Dataframe);
+    printf("case contenant 0 %d", nombre_cellules_contenant_X(Dataframe,0));
     return 0;
 }

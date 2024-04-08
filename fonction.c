@@ -3,6 +3,7 @@
 #include <stdlib.h>
 
 int insert_value_colonne(COLUMN *col, int value_insert){
+    printf("test");
     while(col->taille_Logique>=col->taille_Physique){
         col->tab = realloc(col->tab, ++col->taille_Physique*sizeof(int));
     }
@@ -93,10 +94,11 @@ void remplissage_CDataframe(CDataframe* Dataframe){
     }
 }
 void remplissage_Dur_CDataframe(CDataframe* Dataframe){
-    for(int i = 0;i<Dataframe->taille_Logique;i++){
+    for(int i = 0;i<Dataframe->taille_Physique;i++){
         Dataframe->tab[i].titre = "title";
         for(int j = 0;j<Dataframe->tab[i].taille_Physique;j++){
             insert_value_colonne(&Dataframe->tab[i],0);
+            printf("test22");
         }
     }
 }
@@ -160,34 +162,23 @@ void supr_ligne_CDataFrame(CDataframe* CDataFrame){
 int nombre_cellules_contenant_X(CDataframe* Dataframe, int x){
     int nombre = 0;
     for(int i =0; i<Dataframe->taille_Logique;i++){
-        for(int j=0; j<Dataframe->tab[i].taille_Logique;j++){
-            if(Dataframe->tab[i].tab[j] == x){
-                nombre++;
-            }
-        }
+        nombre = valeur_egale_x(&Dataframe->tab[i],x);
     }
     return nombre;
 }
 int nombre_cellules_superieur_X(CDataframe* Dataframe, int x){
     int nombre = 0;
     for(int i =0; i<Dataframe->taille_Logique;i++){
-        for(int j=0; j<Dataframe->tab[i].taille_Logique;j++){
-            if(Dataframe->tab[i].tab[j] > x){
-                nombre++;
-            }
-        }
+        nombre = valeur_superieur_x(&Dataframe->tab[i],x);
     }
     return nombre;
 }
 int nombre_cellules_inferieur_X(CDataframe* Dataframe, int x){
     int nombre = 0;
     for(int i =0; i<Dataframe->taille_Logique;i++){
-        for(int j=0; j<Dataframe->tab[i].taille_Logique;j++){
-            if(Dataframe->tab[i].tab[j] < x){
-                nombre++;
-            }
+        nombre = valeur_inferieur_x(&Dataframe->tab[i],x);
         }
-    }
+
     return nombre;
 }
 
