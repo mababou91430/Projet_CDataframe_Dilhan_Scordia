@@ -25,3 +25,12 @@ void print_col(COLUMN* col){
         printf("[%d] %d\n",i,col->tab[i]);
     }
 }
+int nombre_occurence(COLUMN* col, int x){
+    int nombre_occurence = 0;
+    for(int i = 0;i<col->taille_Logique;i++){
+        if (col->tab[i] == x){
+            nombre_occurence++;
+        }
+    }
+    return  nombre_occurence;
+}
