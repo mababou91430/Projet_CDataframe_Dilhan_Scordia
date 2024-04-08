@@ -30,6 +30,7 @@ void remplissage_CDataframe(CDataframe*);
 void remplissage_Dur_CDataframe(CDataframe*);
 void afficher_All_CDataframe(CDataframe*);
 void afficher_Ligne_Limite_CDataframe(CDataframe*,int x);
+void afficher_Colonne_Limite_CDataframe(CDataframe*,int x);
 
 void ajout_ligne_CDataFrame(CDataframe* CDataFrame);
 void supr_ligne_CDataFrame(CDataframe* CDataFrame);

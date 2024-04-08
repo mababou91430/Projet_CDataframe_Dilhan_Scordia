@@ -107,7 +107,7 @@ void afficher_All_CDataframe(CDataframe* Dataframe){
     }
 }
 void afficher_Ligne_Limite_CDataframe(CDataframe* Dataframe,int x) {
-    if (x < Dataframe->tab[0].taille_Logique) {
+    if (x <= Dataframe->tab[0].taille_Logique && x >= 0) {
         for (int i = 0; i < Dataframe->taille_Logique; i++) {
             printf("%s\n", Dataframe->tab[i].titre);
             for (int j = 0; j < x; j++) {
@@ -116,6 +116,14 @@ void afficher_Ligne_Limite_CDataframe(CDataframe* Dataframe,int x) {
         }
     } else {
         printf("Limite trop grande");
+    }
+}
+void afficher_Colonne_Limite_CDataframe(CDataframe* Dataframe,int x){
+    if(x <= Dataframe->taille_Logique && x >= 0){
+        for(int i=0;i<x;i++){
+            printf("%s\n",Dataframe->tab[i].titre);
+            print_col(&Dataframe->tab[i]);
+        }
     }
 }
 void ajout_ligne_CDataFrame(CDataframe* CDataFrame) {
