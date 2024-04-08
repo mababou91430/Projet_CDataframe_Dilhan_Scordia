@@ -15,5 +15,7 @@ COLUMN *create_column(char *title);
 void print_col(COLUMN* col);
 int nombre_occurence(COLUMN* col,int x);
 int valeur_pos_x(COLUMN* col,int x);
-int valeur_supérieur_x(COLUMN* col,int x);
+int valeur_superieur_x(COLUMN* col,int x);
+int valeur_inferieur_x(COLUMN* col,int x);
+int valeur_egale_x(COLUMN* col,int x);
 #endif //PROJET_FONCTION_H

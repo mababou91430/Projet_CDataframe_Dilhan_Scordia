@@ -5,6 +5,7 @@
 int main() {
     int x;
     int y;
+    int z;
     COLUMN *colonne = create_column("test");
     for(int i=0; i<10;i++){
         insert_value_colonne(colonne, i);
@@ -12,8 +13,7 @@ int main() {
     insert_value_colonne(colonne, 3);
     print_col(colonne);
     scanf("%d",&x);
-    printf("%d\n", nombre_occurence(colonne,x));
-    scanf("%d",&y);
-    printf("%d\n", valeur_pos_x(colonne,y));
+    printf("%d\n", valeur_egale_x(colonne,x));
+
     return 0;
 }

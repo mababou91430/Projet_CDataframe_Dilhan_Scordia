@@ -38,6 +38,30 @@ int valeur_pos_x(COLUMN* col,int x){
     int pos = col->tab[x];
     return pos;
 }
-int valeur_supérieur_x(COLUMN* col,int x){
-
+int valeur_superieur_x(COLUMN* col,int x){
+    int superieur = 0;
+    for(int i=0; i<col->taille_Logique;i++){
+        if(col->tab[i] > x){
+            superieur++;
+        }
+    }
+    return superieur;
+}
+int valeur_inferieur_x(COLUMN* col,int x){
+    int inferieur = 0;
+    for(int i=0; i<col->taille_Logique;i++){
+        if(col->tab[i] < x){
+            inferieur++;
+        }
+    }
+    return inferieur;
+}
+int valeur_egale_x(COLUMN* col,int x){
+    int egale = 0;
+    for(int i=0; i<col->taille_Logique;i++){
+        if(col->tab[i] == x){
+            egale++;
+        }
+    }
+    return egale;
 }
