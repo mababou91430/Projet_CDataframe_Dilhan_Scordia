@@ -195,3 +195,14 @@ void ajout_colonne_CDataFrame(CDataframe* CDataFrame, char *title){
         CDataFrame->tab[CDataFrame->taille_Logique-1].tab[i]=0;
     }
 }
+
+void supr_colonne_CDataFrame(CDataframe* CDataFrame){
+    CDataFrame->taille_Logique--;
+    while(CDataFrame->taille_Logique<CDataFrame->taille_Physique){
+        CDataFrame->tab = realloc(CDataFrame->tab, --CDataFrame->taille_Physique*sizeof(COLUMN));
+    }
+}
+
+void renommer_colonne_CDataFrame(CDataframe* CDataFrame, int num_colonne, char *title){
+    CDataFrame->tab[num_colonne].titre=title;
+}
