@@ -24,13 +24,17 @@ int valeur_pos_x(COLUMN* col,int x);
 int valeur_superieur_x(COLUMN* col,int x);
 int valeur_inferieur_x(COLUMN* col,int x);
 int valeur_egale_x(COLUMN* col,int x);
-void delete_column(COLUMN *col);
 CDataframe* creation_CDataframe();
 void remplissage_CDataframe(CDataframe*);
 void remplissage_Dur_CDataframe(CDataframe*);
 void afficher_All_CDataframe(CDataframe*);
 void afficher_Ligne_Limite_CDataframe(CDataframe*,int x);
 void afficher_Colonne_Limite_CDataframe(CDataframe*,int x);
+void afficher_nombre_ligne_CDataframe(CDataframe*);
+void afficher_nombre_colonne_CDataframe(CDataframe*);
+int nombre_cellules_contenant_X(CDataframe*,int x);
+int nombre_cellules_superieur_X(CDataframe* Dataframe, int x);
+int nombre_cellules_inferieur_X(CDataframe* Dataframe, int x);
 
 void ajout_ligne_CDataFrame(CDataframe* CDataFrame);
 void supr_ligne_CDataFrame(CDataframe* CDataFrame);

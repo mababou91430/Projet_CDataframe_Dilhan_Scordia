@@ -126,6 +126,12 @@ void afficher_Colonne_Limite_CDataframe(CDataframe* Dataframe,int x){
         }
     }
 }
+void afficher_nombre_ligne_CDataframe(CDataframe* Dataframe){
+    printf("Nombre de ligne du CDataframe : %d",Dataframe->tab[0].taille_Logique);
+}
+void afficher_nombre_colonne_CDataframe(CDataframe* Dataframe){
+    printf("Nombre de colonne du CDataframe : %d",Dataframe->taille_Logique);
+}
 void ajout_ligne_CDataFrame(CDataframe* CDataFrame) {
     //vérification taille physique max Colonne
     int taille_phys_max = CDataFrame->tab[0].taille_Physique;
@@ -150,5 +156,38 @@ void supr_ligne_CDataFrame(CDataframe* CDataFrame){
                 CDataFrame->tab[i].taille_Physique = taille_phys_min - 1;
                 CDataFrame->tab[i].tab= realloc(CDataFrame->tab[i].tab, CDataFrame->tab[i].taille_Physique*sizeof(int));
             }
+}
+int nombre_cellules_contenant_X(CDataframe* Dataframe, int x){
+    int nombre = 0;
+    for(int i =0; i<Dataframe->taille_Logique;i++){
+        for(int j=0; j<Dataframe->tab[i].taille_Logique;j++){
+            if(Dataframe->tab[i].tab[j] == x){
+                nombre++;
+            }
+        }
+    }
+    return nombre;
+}
+int nombre_cellules_superieur_X(CDataframe* Dataframe, int x){
+    int nombre = 0;
+    for(int i =0; i<Dataframe->taille_Logique;i++){
+        for(int j=0; j<Dataframe->tab[i].taille_Logique;j++){
+            if(Dataframe->tab[i].tab[j] > x){
+                nombre++;
+            }
+        }
+    }
+    return nombre;
+}
+int nombre_cellules_inferieur_X(CDataframe* Dataframe, int x){
+    int nombre = 0;
+    for(int i =0; i<Dataframe->taille_Logique;i++){
+        for(int j=0; j<Dataframe->tab[i].taille_Logique;j++){
+            if(Dataframe->tab[i].tab[j] < x){
+                nombre++;
+            }
+        }
+    }
+    return nombre;
 }
 
