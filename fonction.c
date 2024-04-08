@@ -12,12 +12,12 @@ int insert_value_colonne(COLUMN *col, int value_insert){
 }
 
 COLUMN *create_column(char *title){
-    int *tab = NULL;
-    COLUMN * column = (COLUMN*)malloc(sizeof (COLUMN));
+    int *tab = (int*) malloc(sizeof(int));
+    COLUMN* column = (COLUMN*) malloc(sizeof(COLUMN));
     column->titre=title;
     column->tab = tab;
     column->taille_Logique=0;
-    column->taille_Physique=0;
+    column->taille_Physique=1;
     return column;
 }
 void print_col(COLUMN* col){
@@ -69,4 +69,25 @@ int valeur_egale_x(COLUMN* col,int x){
 void delete_column(COLUMN *col) {
     free(col->tab);
     free(col);
+}
+CDataframe *creation_CDataframe(){
+    CDataframe* Dataframe = (CDataframe*) malloc(sizeof(CDataframe));
+    Dataframe->tab = (COLUMN*) malloc(sizeof(COLUMN));
+    Dataframe->taille_Logique = 1;
+    Dataframe->taille_Physique = 1;
+    return Dataframe;
+}
+void remplissage_CDataframe(CDataframe* Dataframe){
+    char title[50];
+    int valeur;
+    for(int i = 0;i<Dataframe->taille_Logique;i++){
+        printf("Entrer un titre pour la colonne %d : ",i);
+        scanf("%s",title);
+        Dataframe->tab[i] = *create_column(title);
+        for(int j = 0;j<Dataframe->tab[i].taille_Physique;j++){
+            printf("Entrer une valeur pour la ligne %d : ",j);
+            scanf("%d",&valeur);
+            insert_value_colonne(&Dataframe->tab[i],valeur);
+        }
+    }
 }
