@@ -70,3 +70,30 @@ int valeur_egale_x(COLUMN* col,int x){
     }
     return egale;
 }
+
+void ajout_ligne_CDataFrame(CDataframe* CDataFrame) {
+    //vérification taille physique max Colonne
+    int taille_phys_max = CDataFrame->tab[0].taille_Physique;
+    for (int i = 1; i < CDataFrame->taille_Physique; i++) {
+        if (CDataFrame->tab[i].taille_Physique >
+            taille_phys_max) { taille_phys_max = CDataFrame->tab[i].taille_Physique; }
+    }
+    //ajout ligne
+    for (int i = 0; i < CDataFrame->taille_Physique; i++) {
+        CDataFrame->tab[i].taille_Physique = taille_phys_max + 1;
+        CDataFrame->tab[i].tab= realloc(CDataFrame->tab[i].tab, CDataFrame->tab[i].taille_Physique*sizeof(int));
+    }
+}
+    void supr_ligne_CDataFrame(CDataframe* CDataFrame){
+            //vérification taille physique min Colonne
+            int taille_phys_min = CDataFrame->tab[0].taille_Physique;
+            for (int i = 1; i < CDataFrame->taille_Physique; i++) {
+                if (CDataFrame->tab[i].taille_Physique <taille_phys_min) { taille_phys_min = CDataFrame->tab[i].taille_Physique; }
+            }
+            //ajout ligne
+            for (int i = 0; i < CDataFrame->taille_Physique; i++) {
+                CDataFrame->tab[i].taille_Physique = taille_phys_min - 1;
+                CDataFrame->tab[i].tab= realloc(CDataFrame->tab[i].tab, CDataFrame->tab[i].taille_Physique*sizeof(int));
+            }
+        }
+
