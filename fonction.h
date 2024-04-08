@@ -27,5 +27,5 @@ int valeur_egale_x(COLUMN* col,int x);
 
 void ajout_ligne_CDataFrame(CDataframe* CDataFrame);
 void supr_ligne_CDataFrame(CDataframe* CDataFrame);
-
+void ajout_colonne_CDataFrame(CDataframe* CDataFrame, char *title)
 #endif //PROJET_FONCTION_H
