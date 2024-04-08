@@ -21,10 +21,6 @@ COLUMN *create_column(char *title){
     return column;
 }
 
-void delete_column(COLUMN *col) {
-    free(col->tab);
-    free(col);
-}
 void print_col(COLUMN* col){
     for(int i =0; i<col->taille_Logique; i++){
         printf("[%d] %d\n",i,col->tab[i]);
@@ -111,18 +107,18 @@ void afficher_All_CDataframe(CDataframe* Dataframe){
         print_col(&Dataframe->tab[i]);
     }
 }
-void afficher_Ligne_Limite_CDataframe(CDataframe* Dataframe,int x){
-    if (x<Dataframe->tab[0].taille_Logique){
-        for(int i = 0;i<Dataframe->taille_Logique;i++) {
+void afficher_Ligne_Limite_CDataframe(CDataframe* Dataframe,int x) {
+    if (x < Dataframe->tab[0].taille_Logique) {
+        for (int i = 0; i < Dataframe->taille_Logique; i++) {
             printf("%s\n", Dataframe->tab[i].titre);
-            for (int j = 0; j <x;j++){
-                printf("%d",Dataframe->tab[i].tab[j]);
+            for (int j = 0; j < x; j++) {
+                printf("%d", Dataframe->tab[i].tab[j]);
             }
         }
-    }
-    else{
+    } else {
         printf("Limite trop grande");
     }
+}
 void ajout_ligne_CDataFrame(CDataframe* CDataFrame) {
     //vérification taille physique max Colonne
     int taille_phys_max = CDataFrame->tab[0].taille_Physique;
@@ -155,4 +151,9 @@ void ajout_colonne_CDataFrame(CDataframe* CDataFrame, char *title){
     }
     CDataFrame->tab[CDataFrame->taille_Logique++]=*create_column(title);
     CDataFrame->tab[CDataFrame->taille_Logique-1].taille_Physique=CDataFrame->tab[0].taille_Physique;
+    CDataFrame->tab[CDataFrame->taille_Logique-1].tab= realloc(CDataFrame->tab[CDataFrame->taille_Logique-1].tab,CDataFrame->tab[CDataFrame->taille_Logique-1].taille_Physique*sizeof(COLUMN));
+    CDataFrame->tab[CDataFrame->taille_Logique-1].taille_Logique=CDataFrame->tab[0].taille_Logique;
+    for(int i=0; i<CDataFrame->tab[CDataFrame->taille_Logique-1].taille_Logique; i++){
+        CDataFrame->tab[CDataFrame->taille_Logique-1].tab[i]=0;
+    }
 }

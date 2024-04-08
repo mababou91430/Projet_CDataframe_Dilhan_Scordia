@@ -32,5 +32,5 @@ void afficher_Ligne_Limite_CDataframe(CDataframe*,int x);
 
 void ajout_ligne_CDataFrame(CDataframe* CDataFrame);
 void supr_ligne_CDataFrame(CDataframe* CDataFrame);
-void ajout_colonne_CDataFrame(CDataframe* CDataFrame, char *title)
+void ajout_colonne_CDataFrame(CDataframe* CDataFrame, char *title);
 #endif //PROJET_FONCTION_H
