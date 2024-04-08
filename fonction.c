@@ -122,12 +122,12 @@ void afficher_Ligne_Limite_CDataframe(CDataframe* Dataframe,int x) {
 void ajout_ligne_CDataFrame(CDataframe* CDataFrame) {
     //vérification taille physique max Colonne
     int taille_phys_max = CDataFrame->tab[0].taille_Physique;
-    for (int i = 1; i < CDataFrame->taille_Physique; i++) {
+    for (int i = 1; i < CDataFrame->taille_Logique; i++) {
         if (CDataFrame->tab[i].taille_Physique >
             taille_phys_max) { taille_phys_max = CDataFrame->tab[i].taille_Physique; }
     }
     //ajout ligne
-    for (int i = 0; i < CDataFrame->taille_Physique; i++) {
+    for (int i = 0; i < CDataFrame->taille_Logique; i++) {
         CDataFrame->tab[i].taille_Physique = taille_phys_max + 1;
         CDataFrame->tab[i].tab= realloc(CDataFrame->tab[i].tab, CDataFrame->tab[i].taille_Physique*sizeof(int));
     }
@@ -135,8 +135,8 @@ void ajout_ligne_CDataFrame(CDataframe* CDataFrame) {
     void supr_ligne_CDataFrame(CDataframe* CDataFrame) {
         //vérification taille physique min Colonne
         int taille_phys_min = CDataFrame->tab[0].taille_Physique;
-        for (int i = 1; i < CDataFrame->taille_Physique; i++) {
-            if (CDataFrame->tab[i].taille_Physique <
+        for (int i = 1; i < CDataFrame->taille_Logique; i++) {
+            if (CDataFrame->tab[i].taille_Logique <
                 taille_phys_min) { taille_phys_min = CDataFrame->tab[i].taille_Physique; }
         }
         //suppresion ligne
