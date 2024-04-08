@@ -12,4 +12,5 @@ typedef struct {
 
 int insert_value_colonne(COLUMN *col, int value_insert);
 COLUMN *create_column(char *title);
+void delete_column(COLUMN *col);
 #endif //PROJET_FONCTION_H

@@ -20,3 +20,8 @@ COLUMN *create_column(char *title){
     column->taille_Physique=0;
     return column;
 }
+
+void delete_column(COLUMN *col) {
+    free(col->tab);
+    free(col);
+}

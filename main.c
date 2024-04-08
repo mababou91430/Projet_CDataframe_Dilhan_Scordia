@@ -8,6 +8,11 @@ int main() {
     for(int i; i<2048;i++){
         insert_value_colonne(colonne, i);
     }
+    printf("%d\n",colonne->tab[400]);
+    printf("%s\n",colonne->titre);
+    delete_column(colonne);
+    printf("%d\n",colonne->tab[400]);
+    printf("%s\n",colonne->titre);
     printf("finish\n");
     return 0;
 }
