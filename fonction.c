@@ -79,15 +79,17 @@ CDataframe *creation_CDataframe(){
     return Dataframe;
 }
 void remplissage_CDataframe(CDataframe* Dataframe){
-    char title[50];
     int valeur;
+    char* title = (char*) malloc(50*sizeof(char));
     for(int i = 0;i<Dataframe->taille_Logique;i++){
         printf("Entrer un titre pour la colonne %d : ",i);
         scanf("%s",title);
+        printf("\n");
         Dataframe->tab[i].titre = title;
         for(int j = 0;j<Dataframe->tab[i].taille_Physique;j++){
             printf("Entrer une valeur pour la ligne %d : ",j);
             scanf("%d",&valeur);
+            printf("\n");
             insert_value_colonne(&Dataframe->tab[i],valeur);
         }
     }
@@ -109,6 +111,20 @@ void afficher_All_CDataframe(CDataframe* Dataframe){
         print_col(&Dataframe->tab[i]);
     }
 }
+/*void afficher_All_CDataframe(CDataframe* Dataframe){
+    for(int i = 0;i<Dataframe->tab->taille_Logique;i++){
+        for(int j=0; j<Dataframe->taille_Logique;j++){
+            if(i==0){
+                printf("%s - ",Dataframe->tab[j].titre);
+            }
+            else{
+                printf("%d  ",Dataframe->tab[j].tab[i]);
+            }
+
+        }
+        printf("\n");
+    }
+}*/
 void afficher_Ligne_Limite_CDataframe(CDataframe* Dataframe,int x) {
     if (x <= Dataframe->tab[0].taille_Logique && x >= 0) {
         for (int i = 0; i < Dataframe->taille_Logique; i++) {
@@ -163,21 +179,21 @@ void supr_ligne_CDataFrame(CDataframe* CDataFrame){
 int nombre_cellules_contenant_X(CDataframe* Dataframe, int x){
     int nombre = 0;
     for(int i =0; i<Dataframe->taille_Logique;i++){
-        nombre = valeur_egale_x(&Dataframe->tab[i],x);
+        nombre += valeur_egale_x(&Dataframe->tab[i],x);
     }
     return nombre;
 }
 int nombre_cellules_superieur_X(CDataframe* Dataframe, int x){
     int nombre = 0;
     for(int i =0; i<Dataframe->taille_Logique;i++){
-        nombre = valeur_superieur_x(&Dataframe->tab[i],x);
+        nombre += valeur_superieur_x(&Dataframe->tab[i],x);
     }
     return nombre;
 }
 int nombre_cellules_inferieur_X(CDataframe* Dataframe, int x){
     int nombre = 0;
     for(int i =0; i<Dataframe->taille_Logique;i++){
-        nombre = valeur_inferieur_x(&Dataframe->tab[i],x);
+        nombre += valeur_inferieur_x(&Dataframe->tab[i],x);
         }
 
     return nombre;
