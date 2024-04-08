@@ -70,11 +70,6 @@ int valeur_egale_x(COLUMN* col,int x){
     }
     return egale;
 }
-
-void delete_column(COLUMN *col) {
-    free(col->tab);
-    free(col);
-}
 CDataframe *creation_CDataframe(){
     CDataframe* Dataframe = (CDataframe*) malloc(sizeof(CDataframe));
     Dataframe->tab = (COLUMN*) malloc(sizeof(COLUMN));
@@ -111,18 +106,18 @@ void afficher_All_CDataframe(CDataframe* Dataframe){
         print_col(&Dataframe->tab[i]);
     }
 }
-void afficher_Ligne_Limite_CDataframe(CDataframe* Dataframe,int x){
-    if (x<Dataframe->tab[0].taille_Logique){
-        for(int i = 0;i<Dataframe->taille_Logique;i++) {
+void afficher_Ligne_Limite_CDataframe(CDataframe* Dataframe,int x) {
+    if (x < Dataframe->tab[0].taille_Logique) {
+        for (int i = 0; i < Dataframe->taille_Logique; i++) {
             printf("%s\n", Dataframe->tab[i].titre);
-            for (int j = 0; j <x;j++){
-                printf("%d",Dataframe->tab[i].tab[j]);
+            for (int j = 0; j < x; j++) {
+                printf("[%d] %d\n",j, Dataframe->tab[i].tab[j]);
             }
         }
-    }
-    else{
+    } else {
         printf("Limite trop grande");
     }
+}
 void ajout_ligne_CDataFrame(CDataframe* CDataFrame) {
     //vérification taille physique max Colonne
     int taille_phys_max = CDataFrame->tab[0].taille_Physique;
@@ -136,7 +131,7 @@ void ajout_ligne_CDataFrame(CDataframe* CDataFrame) {
         CDataFrame->tab[i].tab= realloc(CDataFrame->tab[i].tab, CDataFrame->tab[i].taille_Physique*sizeof(int));
     }
 }
-    void supr_ligne_CDataFrame(CDataframe* CDataFrame){
+void supr_ligne_CDataFrame(CDataframe* CDataFrame){
             //vérification taille physique min Colonne
             int taille_phys_min = CDataFrame->tab[0].taille_Physique;
             for (int i = 1; i < CDataFrame->taille_Physique; i++) {
@@ -147,5 +142,5 @@ void ajout_ligne_CDataFrame(CDataframe* CDataFrame) {
                 CDataFrame->tab[i].taille_Physique = taille_phys_min - 1;
                 CDataFrame->tab[i].tab= realloc(CDataFrame->tab[i].tab, CDataFrame->tab[i].taille_Physique*sizeof(int));
             }
-        }
+}
 
