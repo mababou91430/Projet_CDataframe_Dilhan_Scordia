@@ -34,3 +34,10 @@ int nombre_occurence(COLUMN* col, int x){
     }
     return  nombre_occurence;
 }
+int valeur_pos_x(COLUMN* col,int x){
+    int pos = col->tab[x];
+    return pos;
+}
+int valeur_supérieur_x(COLUMN* col,int x){
+
+}
