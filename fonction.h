@@ -18,4 +18,5 @@ int valeur_pos_x(COLUMN* col,int x);
 int valeur_superieur_x(COLUMN* col,int x);
 int valeur_inferieur_x(COLUMN* col,int x);
 int valeur_egale_x(COLUMN* col,int x);
+void delete_column(COLUMN *col);
 #endif //PROJET_FONCTION_H

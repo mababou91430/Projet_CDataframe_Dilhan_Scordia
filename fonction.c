@@ -65,3 +65,8 @@ int valeur_egale_x(COLUMN* col,int x){
     }
     return egale;
 }
+
+void delete_column(COLUMN *col) {
+    free(col->tab);
+    free(col);
+}
