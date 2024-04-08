@@ -38,5 +38,5 @@ int nombre_cellules_inferieur_X(CDataframe* Dataframe, int x);
 
 void ajout_ligne_CDataFrame(CDataframe* CDataFrame);
 void supr_ligne_CDataFrame(CDataframe* CDataFrame);
-
+void ajout_colonne_CDataFrame(CDataframe* CDataFrame, char *title);
 #endif //PROJET_FONCTION_H

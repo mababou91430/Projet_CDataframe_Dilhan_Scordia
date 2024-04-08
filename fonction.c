@@ -151,11 +151,11 @@ void ajout_ligne_CDataFrame(CDataframe* CDataFrame) {
 void supr_ligne_CDataFrame(CDataframe* CDataFrame){
             //vérification taille physique min Colonne
             int taille_phys_min = CDataFrame->tab[0].taille_Physique;
-            for (int i = 1; i < CDataFrame->taille_Physique; i++) {
+            for (int i = 1; i < CDataFrame->taille_Logique; i++) {
                 if (CDataFrame->tab[i].taille_Physique <taille_phys_min) { taille_phys_min = CDataFrame->tab[i].taille_Physique; }
             }
             //ajout ligne
-            for (int i = 0; i < CDataFrame->taille_Physique; i++) {
+            for (int i = 0; i < CDataFrame->taille_Logique; i++) {
                 CDataFrame->tab[i].taille_Physique = taille_phys_min - 1;
                 CDataFrame->tab[i].tab= realloc(CDataFrame->tab[i].tab, CDataFrame->tab[i].taille_Physique*sizeof(int));
             }
@@ -183,3 +183,15 @@ int nombre_cellules_inferieur_X(CDataframe* Dataframe, int x){
     return nombre;
 }
 
+void ajout_colonne_CDataFrame(CDataframe* CDataFrame, char *title){
+    while(CDataFrame->taille_Logique>=CDataFrame->taille_Physique){
+        CDataFrame->tab = realloc(CDataFrame->tab, ++CDataFrame->taille_Physique*sizeof(COLUMN));
+    }
+    CDataFrame->tab[CDataFrame->taille_Logique++]=*create_column(title);
+    CDataFrame->tab[CDataFrame->taille_Logique-1].taille_Physique=CDataFrame->tab[0].taille_Physique;
+    CDataFrame->tab[CDataFrame->taille_Logique-1].tab= realloc(CDataFrame->tab[CDataFrame->taille_Logique-1].tab,CDataFrame->tab[CDataFrame->taille_Logique-1].taille_Physique*sizeof(COLUMN));
+    CDataFrame->tab[CDataFrame->taille_Logique-1].taille_Logique=CDataFrame->tab[0].taille_Logique;
+    for(int i=0; i<CDataFrame->tab[CDataFrame->taille_Logique-1].taille_Logique; i++){
+        CDataFrame->tab[CDataFrame->taille_Logique-1].tab[i]=0;
+    }
+}
