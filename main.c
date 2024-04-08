@@ -12,6 +12,7 @@ int main() {
     ajout_ligne_CDataFrame(Dataframe);
     remplissage_Dur_CDataframe(Dataframe);
     afficher_All_CDataframe(Dataframe);
+    printf("Taille logique %d\n ",Dataframe->tab[0].taille_Logique);
     printf("case contenant 0 %d", nombre_cellules_contenant_X(Dataframe,0));
     return 0;
 }
