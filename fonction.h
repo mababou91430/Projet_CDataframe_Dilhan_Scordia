@@ -41,4 +41,6 @@ void supr_ligne_CDataFrame(CDataframe* CDataFrame);
 void ajout_colonne_CDataFrame(CDataframe* CDataFrame, char *title);
 void supr_colonne_CDataFrame(CDataframe* CDataFrame);
 void renommer_colonne_CDataFrame(CDataframe* CDataFrame, int num_colonne, char *title);
+int verif_existence(CDataframe* CDataFrame, int val);
+void remplacer_val(CDataframe* CDataFrame, int val, int i, int j);
 #endif //PROJET_FONCTION_H

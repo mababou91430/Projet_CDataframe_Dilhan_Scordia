@@ -222,3 +222,24 @@ void supr_colonne_CDataFrame(CDataframe* CDataFrame){
 void renommer_colonne_CDataFrame(CDataframe* CDataFrame, int num_colonne, char *title){
     CDataFrame->tab[num_colonne].titre=title;
 }
+
+int verif_existence(CDataframe* CDataFrame, int val){
+    int existence = 0, i=0;
+    while(i<CDataFrame->taille_Logique && existence==0){
+        if(valeur_egale_x(&CDataFrame->tab[i],val)==0){
+            i++;
+        }
+        else{existence++;}
+    }
+    return existence;
+}
+
+void remplacer_val(CDataframe* CDataFrame, int val, int col, int ligne){
+    CDataFrame->tab[col].tab[ligne]=val;
+}
+
+void afficher_nom_col(CDataframe* CDataFrame){
+    for(int i=0; i<CDataFrame->taille_Logique; i++){
+        printf("[%d] %s\n",i,CDataFrame->tab[i].titre);
+    }
+}
