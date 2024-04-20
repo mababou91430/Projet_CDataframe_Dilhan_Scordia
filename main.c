@@ -45,6 +45,7 @@ int main() {
                 break;
             }
             case 4: {
+                supr_colonne_CDataFrame(Dataframe);
                 break;
             }
             case 5: {
@@ -52,6 +53,16 @@ int main() {
                 break;
             }
             case 6: {
+                int val=0;
+                int i=0;
+                int j=0;
+                printf("Entrer la ligne de la valeur a remplacer : ");
+                scanf("%d",&i);
+                printf("Entrer la colonne de la valeur a remplacer : ");
+                scanf("%d",&j);
+                printf("Entrer la nouvelle valeur");
+                scanf("%d",&val);
+                remplacer_val(Dataframe,val,j,i);
                 break;
             }
             case 7: {
