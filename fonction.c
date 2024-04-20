@@ -91,7 +91,7 @@ void remplissage_CDataframe(CDataframe* Dataframe){
             printf("Entrer une valeur pour la ligne %d : ",j);
             scanf("%d",&valeur);
             printf("\n");
-            insert_value_colonne(&Dataframe->tab[i],valeur);
+            Dataframe->tab[i].tab[j] = valeur;
         }
     }
 }
@@ -107,7 +107,6 @@ void remplissage_Dur_CDataframe(CDataframe* Dataframe){
     }
 }
 void afficher_All_CDataframe(CDataframe* Dataframe){
-    printf("%d",Dataframe->taille_Logique)
     for(int i = 0; i<Dataframe->taille_Logique;i++){
         printf("%s\n",Dataframe->tab[i].titre);
         print_col(&Dataframe->tab[i]);

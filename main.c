@@ -82,23 +82,23 @@ int main() {
             }
             case 12: {
                 int x;
-                printf("Entrer un nombre pour savoir combien de cellule sont égales à ce nombre dans le Dataframe");
+                printf("Entrer un nombre pour savoir combien de cellule sont egales a ce nombre dans le Dataframe");
                 scanf("%d",&x);
-                nombre_cellules_contenant_X(Dataframe,x);
+                printf("%d",nombre_cellules_contenant_X(Dataframe,x));
                 break;
             }
             case 13: {
                 int x;
-                printf("Entrer un nombre pour savoir combien de cellule sont supérieures à ce nombre dans le Dataframe");
+                printf("Entrer un nombre pour savoir combien de cellule sont superieures a ce nombre dans le Dataframe");
                 scanf("%d",&x);
-                nombre_cellules_superieur_X(Dataframe,x);
+                printf("%d",nombre_cellules_superieur_X(Dataframe,x));
                 break;
             }
             case 14 : {
                 int x;
-                printf("Entrer un nombre pour savoir combien de cellule sont inférieures à ce nombre dans le Dataframe");
+                printf("Entrer un nombre pour savoir combien de cellule sont inferieures a ce nombre dans le Dataframe");
                 scanf("%d",&x);
-                nombre_cellules_inferieur_X(Dataframe,x);
+                printf("%d",nombre_cellules_inferieur_X(Dataframe,x));
                 break;
             }
             default: printf("Ce nombre n'est pas prit en compte");
