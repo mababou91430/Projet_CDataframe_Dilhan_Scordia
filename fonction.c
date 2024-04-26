@@ -80,17 +80,18 @@ CDataframe *creation_CDataframe(){
 }
 void remplissage_CDataframe(CDataframe* Dataframe){
     int valeur;
+    int tailleP = Dataframe->tab[0].taille_Physique;
     char* title = (char*) malloc(50*sizeof(char));
     for(int i = 0;i<Dataframe->taille_Logique;i++){
         printf("Entrer un titre pour la colonne %d : ",i);
         scanf("%s",title);
         printf("\n");
         Dataframe->tab[i].titre = title;
-        for(int j = 0;j<Dataframe->tab[i].taille_Physique;j++){
+        for(int j = 0;j<tailleP;j++){
             printf("Entrer une valeur pour la ligne %d : ",j);
             scanf("%d",&valeur);
             printf("\n");
-            insert_value_colonne(&Dataframe->tab[i],valeur);
+            Dataframe->tab[i].tab[j] = valeur;
         }
     }
 }
