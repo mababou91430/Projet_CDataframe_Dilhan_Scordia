@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int insert_value_colonne(COLUMN *col, int value_insert){
+/*int insert_value_colonne(COLUMN *col, int value_insert){
     while(col->taille_Logique>=col->taille_Physique){
         col->tab = realloc(col->tab, ++col->taille_Physique*sizeof(int));
     }
@@ -112,7 +112,7 @@ void afficher_All_CDataframe(CDataframe* Dataframe){
         print_col(&Dataframe->tab[i]);
     }
 }
-/*void afficher_All_CDataframe(CDataframe* Dataframe){
+void afficher_All_CDataframe(CDataframe* Dataframe){
     for(int i = 0;i<Dataframe->tab->taille_Logique;i++){
         for(int j=0; j<Dataframe->taille_Logique;j++){
             if(i==0){
@@ -125,7 +125,7 @@ void afficher_All_CDataframe(CDataframe* Dataframe){
         }
         printf("\n");
     }
-}*/
+}
 void afficher_Ligne_Limite_CDataframe(CDataframe* Dataframe,int x) {
     if (x <= Dataframe->tab[0].taille_Logique && x >= 0) {
         for (int i = 0; i < Dataframe->taille_Logique; i++) {
@@ -243,4 +243,5 @@ void afficher_nom_col(CDataframe* CDataFrame){
     for(int i=0; i<CDataFrame->taille_Logique; i++){
         printf("[%d] %s\n",i,CDataFrame->tab[i].titre);
     }
-}
+}*/
+
