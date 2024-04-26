@@ -10,8 +10,6 @@ int main() {
     ajout_colonne_CDataFrame(Dataframe, "colonne ajouté");
     ajout_colonne_CDataFrame(Dataframe, "colonne ajouté2");
     remplissage_Dur_CDataframe(Dataframe);
-    supr_colonne_CDataFrame(Dataframe);
-    afficher_All_CDataframe(Dataframe);
     printf("case contenant 0 %d", nombre_cellules_contenant_X(Dataframe,0));
     return 0;
 }
