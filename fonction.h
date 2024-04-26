@@ -35,7 +35,7 @@ typedef struct {
 #ifndef PROJET_FONCTION_H
 #define PROJET_FONCTION_H
 
-int insert_value_colonne(COLUMN *col, int value_insert);
+int insert_value_colonne(COLUMN *col, void *value_insert);
 COLUMN *create_column(ENUM_TYPE type, char *title);
 void delete_column(COLUMN *col);
 void print_col(COLUMN* col);
