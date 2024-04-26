@@ -11,11 +11,11 @@ int insert_value_colonne(COLUMN *col, int value_insert){
     return 0;
 }
 
-COLUMN *create_column(char *title){
-    int *tab = (int*) malloc(sizeof(int));
+COLUMN *create_column(ENUM_TYPE type, char *title){
     COLUMN* column = (COLUMN*) malloc(sizeof(COLUMN));
+    column->column_type=type;
     column->titre=title;
-    column->tab = tab;
+    column->tab = (COL_TYPE **) malloc(sizeof(COL_TYPE));
     column->taille_Logique=0;
     column->taille_Physique=1;
     return column;

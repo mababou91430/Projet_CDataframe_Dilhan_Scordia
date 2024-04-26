@@ -1,19 +1,9 @@
 //
 // Created by mathm on 29/03/2024.
 //
-typedef struct {
-    char* titre;
-    int* tab;
-    int taille_Physique;
-    int taille_Logique;
-}COLUMN;
 
-typedef struct {
-    COLUMN * tab;
-    int taille_Physique;
-    int taille_Logique;
-}CDataframe;
-/*enum enum_type {
+
+enum enum_type {
     NULLVAL = 1 , UINT, INT, CHAR, FLOAT, DOUBLE, STRING, STRUCTURE
 };
 typedef enum enum_type ENUM_TYPE;
@@ -26,13 +16,27 @@ double double_value;
 char* string_value;
 void* struct_value;
 };
-typedef union column_type COL_TYPE ;*/
+typedef union column_type COL_TYPE ;
+struct column {
+    char *titre;
+    unsigned int taille_Logique; //logical size
+    unsigned int taille_Physique; //physical size
+    ENUM_TYPE column_type;
+    COL_TYPE **tab; // array of pointers to stored data
+    unsigned long long int *index; // array of integers
+};
+typedef struct column COLUMN;
 
+typedef struct {
+    COLUMN * tab;
+    int taille_Physique;
+    int taille_Logique;
+}CDataframe;
 #ifndef PROJET_FONCTION_H
 #define PROJET_FONCTION_H
 
 int insert_value_colonne(COLUMN *col, int value_insert);
-COLUMN *create_column(char *title);
+COLUMN *create_column(ENUM_TYPE type, char *title);
 void delete_column(COLUMN *col);
 void print_col(COLUMN* col);
 int nombre_occurence(COLUMN* col,int x);
