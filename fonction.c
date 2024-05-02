@@ -2,12 +2,38 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int insert_value_colonne(COLUMN *col, int value_insert){
-    while(col->taille_Logique>=col->taille_Physique){
-        col->tab = realloc(col->tab, ++col->taille_Physique*sizeof(int));
+int insert_value_colonne(COLUMN *col, void *value_insert){
+    if(col->taille_Logique == col->taille_Physique){
+        col->tab = realloc(col->tab,sizeof(col->tab)+256);
     }
-    col->tab[col->taille_Logique++]=value_insert;
-    if (col->tab[col->taille_Logique-1]==value_insert){return 1;}
+    unsigned int *ptr;
+    switch (col->column_type) {
+
+        case NULLVAL:
+            col->tab[col->taille_Logique]->struct_value = value_insert;
+            break;
+
+        case UINT:
+            col->tab[col->taille_Logique] = (COL_TYPE *) (unsigned int*) malloc(sizeof(unsigned int));
+            *((unsigned int*)col->tab[col->taille_Logique])= *((unsigned int*)value_insert);
+            break;
+        case INT:
+            col->tab[col->taille_Logique] = (COL_TYPE *) (int *) malloc(sizeof(int));
+            (col->tab[col->taille_Logique]->int_value)= *((int*)value_insert);
+            break;
+        case CHAR:
+            col->tab[col->taille_Logique] = (COL_TYPE *) (char*) malloc(sizeof(char));
+            *((char*)col->tab[col->taille_Logique])= *((char*)value_insert);
+            break;
+        case FLOAT:
+            break;
+        case DOUBLE:
+            break;
+        case STRING:
+            break;
+        case STRUCTURE:
+            break;
+    }
     return 0;
 }
 
