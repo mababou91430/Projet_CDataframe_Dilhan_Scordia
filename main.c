@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 int main() {
-    int choix = -1;
+    /*int choix = -1;
     CDataframe* Dataframe = creation_CDataframe();
     remplissage_Dur_CDataframe(Dataframe);
     printf("Entrer un chiffre pour choisir une operation : \n"
@@ -114,6 +114,40 @@ int main() {
             }
             default: printf("Ce nombre n'est pas prit en compte");
         }
+    }*/
+    ENUM_TYPE type_colonne;
+    int type;
+    printf("Type de valeur\nInt\nChar\nFloat\nDouble\nString\nStruct\nUnsigned int");
+    scanf("%d",&type);
+    switch (type) {
+        case 1:{
+            type_colonne = INT;
+            break;
+        }
+        case 2 :{
+            type_colonne = CHAR;
+            break;
+        }
+        case 3 :{
+            type_colonne = FLOAT;
+            break;
+        }
+        case 4 :{
+            type_colonne = DOUBLE;
+            break;
+        }
+        case 5 :{
+            type_colonne = STRING;
+            break;
+        }
+        case 6 :{
+            type_colonne = STRUCTURE;
+            break;
+        }
+        case 7 :{
+            type_colonne = UINT;
+        }
     }
+    create_column()
     return 0;
 }

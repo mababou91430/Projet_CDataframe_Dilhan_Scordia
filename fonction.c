@@ -8,23 +8,36 @@ int insert_value_colonne(COLUMN *col, void *value_insert){
     }
     switch (col->column_type) {
         case NULLVAL:{
+            col->tab[col->taille_Logique] = (void *) malloc (sizeof(void));
             break;}
         case INT:{
             col->tab[col->taille_Logique] = (int*) malloc (sizeof(int));
             (*(col->tab[col->taille_Logique])).int_value= *((int*)value_insert);
             break;}
         case CHAR:{
+            col->tab[col->taille_Logique] = (char*) malloc (sizeof(char));
+            (*(col->tab[col->taille_Logique])).char_value = *((char*)value_insert);
             break;}
         case FLOAT:
+            col->tab[col->taille_Logique] = (float *) malloc (sizeof(float));
+            (*(col->tab[col->taille_Logique])).float_value= *((float *)value_insert);
             break;
         case DOUBLE:
+            col->tab[col->taille_Logique] = (double*) malloc (sizeof(double));
+            (*(col->tab[col->taille_Logique])).double_value= *((double *)value_insert);
             break;
-        case STRING:
-            break;
-        case STRUCTURE:
-            break;
-        case UINT:
-            break;
+        case STRING:{
+            col->tab[col->taille_Logique] = (char*) malloc (100*sizeof(char));
+            (*(col->tab[col->taille_Logique])).string_value = ((char *)value_insert);
+            break;}
+        case STRUCTURE:{
+            col->tab[col->taille_Logique] = (int *) malloc (sizeof(int));
+            (*(col->tab[col->taille_Logique])).int_value= *((int*)value_insert);
+            break;}
+        case UINT:{
+            col->tab[col->taille_Logique] = (unsigned int*) malloc (sizeof(unsigned int));
+            (*(col->tab[col->taille_Logique])).uint_value= *((unsigned int*)value_insert);
+            break;}
     }
     if (col->tab[col->taille_Logique-1]==value_insert){return 1;}
     return 0;
@@ -39,7 +52,7 @@ COLUMN *create_column(ENUM_TYPE type, char *title){
     column->taille_Physique=1;
     return column;
 }
-
+/*
 void delete_column(COLUMN *col) {
     free(col->tab);
     free(col);
@@ -131,7 +144,7 @@ void afficher_All_CDataframe(CDataframe* Dataframe){
         print_col(&Dataframe->tab[i]);
     }
 }
-/*void afficher_All_CDataframe(CDataframe* Dataframe){
+void afficher_All_CDataframe(CDataframe* Dataframe){
     for(int i = 0;i<Dataframe->tab->taille_Logique;i++){
         for(int j=0; j<Dataframe->taille_Logique;j++){
             if(i==0){
@@ -144,7 +157,7 @@ void afficher_All_CDataframe(CDataframe* Dataframe){
         }
         printf("\n");
     }
-}*/
+}
 void afficher_Ligne_Limite_CDataframe(CDataframe* Dataframe,int x) {
     if (x <= Dataframe->tab[0].taille_Logique && x >= 0) {
         for (int i = 0; i < Dataframe->taille_Logique; i++) {
@@ -262,4 +275,4 @@ void afficher_nom_col(CDataframe* CDataFrame){
     for(int i=0; i<CDataFrame->taille_Logique; i++){
         printf("[%d] %s\n",i,CDataFrame->tab[i].titre);
     }
-}
+}*/
