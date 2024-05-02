@@ -115,9 +115,11 @@ int main() {
             default: printf("Ce nombre n'est pas prit en compte");
         }
     }*/
-    ENUM_TYPE type_colonne;
+    ENUM_TYPE type_colonne = (ENUM_TYPE) malloc(sizeof(ENUM_TYPE));
     int type;
-    printf("Type de valeur\nInt\nChar\nFloat\nDouble\nString\nStruct\nUnsigned int");
+    char * titre = (char *) malloc(50*sizeof(char));
+    void *value;
+    printf("Type de valeur\nInt\nChar\nFloat\nDouble\nString\nStruct\nUnsigned int\n");
     scanf("%d",&type);
     switch (type) {
         case 1:{
@@ -147,7 +149,13 @@ int main() {
         case 7 :{
             type_colonne = UINT;
         }
+        default: printf("Chiffre pas pris en compte");
     }
-    create_column()
+    printf("Entrer un titre");
+    scanf("%s",titre);
+    COLUMN *col = create_column(type_colonne,titre);
+    printf("Entrer une valeur\n");
+    scanf("%p", &value);
+    insert_value_colonne(col,value);
     return 0;
 }
