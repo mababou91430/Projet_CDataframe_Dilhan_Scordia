@@ -8,7 +8,8 @@ int insert_value_colonne(COLUMN *col, void *value_insert){
     }
     switch (col->column_type) {
         case NULLVAL:{
-            col->tab[col->taille_Logique] = (void *) malloc (sizeof(void));
+            col->tab[col->taille_Logique] = (void *) malloc (sizeof(int));
+            (*(col->tab[col->taille_Logique])).int_value = NULLVAL;
             break;}
         case INT:{
             col->tab[col->taille_Logique] = (int*) malloc (sizeof(int));
