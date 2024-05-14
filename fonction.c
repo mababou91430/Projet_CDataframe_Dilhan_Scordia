@@ -5,41 +5,43 @@
 int insert_value_colonne(COLUMN *col, void *value_insert){
     while(col->taille_Logique>=col->taille_Physique){
         col->tab = realloc(col->tab, ++col->taille_Physique*sizeof(int));
+        col->taille_Physique++;
     }
     switch (col->column_type) {
         case NULLVAL:{
             col->tab[col->taille_Logique] = (void *) malloc (sizeof(int));
-            (*(col->tab[col->taille_Logique])).int_value = NULLVAL;
+            (*(col->tab[col->taille_Logique])).char_value = NULLVAL;
             break;}
         case INT:{
-            col->tab[col->taille_Logique] = (int*) malloc (sizeof(int));
-            (*(col->tab[col->taille_Logique])).int_value= *((int*)value_insert);
+            col->tab[col->taille_Logique]->int_value = *((int*)malloc(sizeof(int)));
+            (col->tab[col->taille_Logique]->int_value) = *((int*)value_insert);
             break;}
         case CHAR:{
-            col->tab[col->taille_Logique] = (char*) malloc (sizeof(char));
-            (*(col->tab[col->taille_Logique])).char_value = *((char*)value_insert);
+            col->tab[col->taille_Logique]->char_value = *((char*) malloc (sizeof(char)));
+            *((char *)col->tab[col->taille_Logique]) = *((char*)value_insert);
             break;}
         case FLOAT:
-            col->tab[col->taille_Logique] = (float *) malloc (sizeof(float));
-            (*(col->tab[col->taille_Logique])).float_value= *((float *)value_insert);
+            col->tab[col->taille_Logique]->float_value = *((float *) malloc (sizeof(float)));
+            *((float *)col->tab[col->taille_Logique]) = *((float *)value_insert);
             break;
         case DOUBLE:
-            col->tab[col->taille_Logique] = (double*) malloc (sizeof(double));
-            (*(col->tab[col->taille_Logique])).double_value= *((double *)value_insert);
+            col->tab[col->taille_Logique]->double_value = *((double*) malloc (sizeof(double)));
+            *((double *)col->tab[col->taille_Logique]) = *((double *)value_insert);
             break;
         case STRING:{
-            col->tab[col->taille_Logique] = (char*) malloc (100*sizeof(char));
-            (*(col->tab[col->taille_Logique])).string_value = ((char *)value_insert);
+            col->tab[col->taille_Logique]->char_value = *((char*) malloc (100*sizeof(char)));
+            *((char *)col->tab[col->taille_Logique]) = *((char *)value_insert);
             break;}
         case STRUCTURE:{
-            col->tab[col->taille_Logique] = (int *) malloc (sizeof(int));
-            (*(col->tab[col->taille_Logique])).int_value= *((int*)value_insert);
+            col->tab[col->taille_Logique]->struct_value = (int *) malloc (sizeof(int));
+            *((int *)col->tab[col->taille_Logique]) = *((int*)value_insert);
             break;}
         case UINT:{
-            col->tab[col->taille_Logique] = (unsigned int*) malloc (sizeof(unsigned int));
-            (*(col->tab[col->taille_Logique])).uint_value= *((unsigned int*)value_insert);
+            col->tab[col->taille_Logique]->uint_value = *(unsigned int*) malloc (sizeof(unsigned int));
+            *((unsigned int*)col->tab[col->taille_Logique]) = *((unsigned int*)value_insert);
             break;}
     }
+    col->taille_Logique ++;
     if (col->tab[col->taille_Logique-1]==value_insert){return 1;}
     return 0;
 }

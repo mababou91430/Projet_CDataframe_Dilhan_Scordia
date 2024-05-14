@@ -115,10 +115,10 @@ int main() {
             default: printf("Ce nombre n'est pas prit en compte");
         }
     }*/
-    ENUM_TYPE type_colonne = (ENUM_TYPE) malloc(sizeof(ENUM_TYPE));
+    ENUM_TYPE type_colonne ;//= (ENUM_TYPE) malloc(sizeof(ENUM_TYPE));
     int type;
     char * titre = (char *) malloc(50*sizeof(char));
-    void *value;
+    //void *value;
     printf("Type de valeur\nInt\nChar\nFloat\nDouble\nString\nStruct\nUnsigned int\n");
     scanf("%d",&type);
     switch (type) {
@@ -154,8 +154,76 @@ int main() {
     printf("Entrer un titre");
     scanf("%s",titre);
     COLUMN *col = create_column(type_colonne,titre);
-    printf("Entrer une valeur\n");
-    scanf("%p", &value);
-    insert_value_colonne(col,value);
+    printf("saisir une valeur :");
+    switch (type_colonne) {
+        case INT:{
+            int val;
+            scanf("%d",&val);
+            insert_value_colonne(col,(void*)&val);
+            break;
+        }
+        case CHAR :{
+            char val;
+            scanf("%c",&val);
+            insert_value_colonne(col,(void*)&val);
+            break;
+        }
+        case FLOAT :{
+            float val;
+            scanf("%f",&val);
+            insert_value_colonne(col,(void*)&val);
+            break;
+        }
+        case DOUBLE :{
+            double val;
+            scanf("%lf",&val);
+            insert_value_colonne(col,(void*)&val);
+            break;
+        }
+        case STRING :{
+            char * val = (char *) malloc(50*sizeof(char));
+            scanf("%s",val);
+            insert_value_colonne(col,(void*)&val);
+            break;
+        }
+        case STRUCTURE :{
+            void * val;
+            break;
+        }
+        case UINT :{
+            unsigned int val;
+            scanf("%d",&val);
+            insert_value_colonne(col,(void*)&val);
+            break;
+        }
+        default: printf("Chiffre pas pris en compte");
+    }
+    switch (col->column_type) {
+        case INT:{
+            printf("%d",col->tab[0]->int_value);
+            break;
+        }
+        case CHAR :{
+            printf("%c",col->tab[0]->char_value);
+            break;
+        }
+        case FLOAT :{
+            printf("%f",col->tab[0]->float_value);
+            break;
+        }
+        case DOUBLE :{
+            printf("%f",col->tab[0]->double_value);
+            break;
+        }
+        case STRING :{
+            printf("%s",col->tab[0]->string_value);
+            break;
+        }
+        case UINT :{
+            printf("%d",col->tab[0]->uint_value);
+            break;
+        }
+        default: printf("pas pris");
+    }
     return 0;
 }
