@@ -13,7 +13,7 @@ int insert_value_colonne(COLUMN *col, int value_insert){
 
 COLUMN *create_column(char *title){
     int *tab = (int*) malloc(sizeof(int));
-    COLUMN* column = (COLUMN*) malloc(sizeof(COLUMN));
+    COLUMN* column = (COLUMN*)malloc(sizeof(COLUMN));
     column->titre=title;
     column->tab = tab;
     column->taille_Logique=0;
@@ -154,6 +154,7 @@ void afficher_nombre_colonne_CDataframe(CDataframe* Dataframe){
 }
 void ajout_ligne_CDataFrame(CDataframe* CDataFrame) {
     //vérification taille physique max Colonne
+    printf("%d",CDataFrame->tab[0].taille_Logique);
     int taille_phys_max = CDataFrame->tab[0].taille_Physique;
     for (int i = 1; i < CDataFrame->taille_Logique; i++) {
         if (CDataFrame->tab[i].taille_Physique >
@@ -164,18 +165,21 @@ void ajout_ligne_CDataFrame(CDataframe* CDataFrame) {
         CDataFrame->tab[i].taille_Physique = taille_phys_max + 1;
         CDataFrame->tab[i].tab= realloc(CDataFrame->tab[i].tab, CDataFrame->tab[i].taille_Physique*sizeof(int));
     }
+    printf("%d",CDataFrame->tab[0].taille_Logique);
 }
 void supr_ligne_CDataFrame(CDataframe* CDataFrame){
+            printf("%d",CDataFrame->tab[0].taille_Physique);
             //vérification taille physique min Colonne
-            int taille_phys_min = CDataFrame->tab[0].taille_Physique;
+            int taille_phys_min = CDataFrame->tab[0].taille_Logique;
             for (int i = 1; i < CDataFrame->taille_Logique; i++) {
-                if (CDataFrame->tab[i].taille_Physique <taille_phys_min) { taille_phys_min = CDataFrame->tab[i].taille_Physique; }
+                if (CDataFrame->tab[i].taille_Logique <taille_phys_min) { taille_phys_min = CDataFrame->tab[i].taille_Logique; }
             }
             //ajout ligne
             for (int i = 0; i < CDataFrame->taille_Logique; i++) {
-                CDataFrame->tab[i].taille_Physique = taille_phys_min - 1;
-                CDataFrame->tab[i].tab= realloc(CDataFrame->tab[i].tab, CDataFrame->tab[i].taille_Physique*sizeof(int));
+                CDataFrame->tab[i].taille_Logique = taille_phys_min - 1;
+                CDataFrame->tab[i].tab= realloc(CDataFrame->tab[i].tab, CDataFrame->tab[i].taille_Logique*sizeof(int));
             }
+            printf("%d",CDataFrame->tab[0].taille_Physique);
 }
 int nombre_cellules_contenant_X(CDataframe* Dataframe, int x){
     int nombre = 0;

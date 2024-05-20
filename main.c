@@ -21,7 +21,9 @@ int main() {
                "11 : Afficher le nombre de colonne du Dataframe\n"
                "12 : Nombre de cellule contenant une valeur\n"
                "13 : Nombre de cellule superieur a une valeur\n"
-               "14 : Nombre de cellule inferieur a une valeur\n");
+               "14 : Nombre de cellule inferieur a une valeur\n"
+               "15 : Remplissage dur cdataframe");
+
     while (choix != 0) {
         scanf("%d",&choix);
         switch (choix) {
@@ -110,6 +112,10 @@ int main() {
                 printf("Entrer un nombre pour savoir combien de cellule sont inferieures a ce nombre dans le Dataframe");
                 scanf("%d",&x);
                 printf("%d",nombre_cellules_inferieur_X(Dataframe,x));
+                break;
+            }
+            case 15 : {
+                remplissage_Dur_CDataframe(Dataframe);
                 break;
             }
             default: printf("Ce nombre n'est pas prit en compte");
